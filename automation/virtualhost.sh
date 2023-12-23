@@ -52,7 +52,6 @@ cockpit() {
 
   sudo semanage port -m -t websm_port_t -p tcp 443 &&
 
-
   touch /etc/cockpit/cockpit.conf &&
   echo "[WebService]" >  /etc/cockpit/cockpit.conf &&
   echo "LoginTitle=Fakultas Adab dan Humaniora" > /etc/cockpit/cockpit.conf &&
