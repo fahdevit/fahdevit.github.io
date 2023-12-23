@@ -16,7 +16,6 @@ firewall() {
   $CORESYS=$(firewall-cmd --get-active-zones | grep "coresys");
   $SYSADMS=$(firewall-cmd --get-active-zones | grep "sysadm");
 
-
   if [ ${#CORESYS} -gt 0 ]; then
     echo "zone exist";
   else
