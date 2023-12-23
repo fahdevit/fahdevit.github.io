@@ -13,16 +13,16 @@ bootconf() {
 
 firewall() {
 
-  $CORESYS=$(firewall-cmd --get-active-zones | grep "coresys");
-  $SYSADMS=$(firewall-cmd --get-active-zones | grep "sysadm");
+  $CORESYS=$(firewall-cmd --get-active-zones | grep "coresys" | wc -c );
+  $SYSADMS=$(firewall-cmd --get-active-zones | grep "sysadm" |  wc -c );
 
-  if [ ${#CORESYS} -gt 0 ]; then
+  if [ $CORESYS -gt 0 ]; then
     echo "zone exist";
   else
     sudo firewall-cmd --permanent --new-zone=coresys;
   fi
 
-  if [ ${#SYSADMS} -gt 0 ]; then
+  if [ $SYSADMS -gt 0 ]; then
     echo "zone exist";
   else
     sudo firewall-cmd --permanent --new-zone=sysadm;
