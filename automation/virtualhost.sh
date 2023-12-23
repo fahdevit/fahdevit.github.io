@@ -19,7 +19,7 @@ firewall() {
     sudo firewall-cmd --permanent --new-zone=coresys;
   fi
 
-  if [ $( firewall-cmd --get-active-zones | grep "sysadm" ) == "coresys" ]; then
+  if [ $( firewall-cmd --get-active-zones | grep "sysadm" ) == "sysadm" ]; then
     echo "zone exist";
   else
     sudo firewall-cmd --permanent --new-zone=sysadm;
