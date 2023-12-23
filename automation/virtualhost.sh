@@ -13,13 +13,17 @@ bootconf() {
 
 firewall() {
 
-  if [ $( firewall-cmd --get-active-zones | grep "coresys" ) == "coresys" ]; then
+  $CORESYS=$(firewall-cmd --get-active-zones | grep "coresys");
+  $SYSADMS=$(firewall-cmd --get-active-zones | grep "sysadm");
+
+
+  if [ ${#CORESYS} -gt 0 ]; then
     echo "zone exist";
   else
     sudo firewall-cmd --permanent --new-zone=coresys;
   fi
 
-  if [ $( firewall-cmd --get-active-zones | grep "sysadm" ) == "sysadm" ]; then
+  if [ ${#SYSADMS} -gt 0 ]; then
     echo "zone exist";
   else
     sudo firewall-cmd --permanent --new-zone=sysadm;
@@ -58,7 +62,7 @@ cockpit() {
   sudo firewall-cmd --permanent --zone="sysadm" --permanent --add-service=https &&
   sudo firewall-cmd --permanent --zone="sysadm" --permanent --remove-service=cockpit &&
   sudo firewall-cmd --permanent --zone="public" --permanent --remove-service=cockpit &&
-  sudo firewall-cmr --reload &&
+  sudo firewall-cmd --reload &&
   
   sudo systemctl daemon-reload &&
   sudo systemctl restart cockpit.socket;
