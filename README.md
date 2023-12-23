@@ -3,5 +3,5 @@
 
 # Virtualhost Automation Script
 ```
-curl -o vhost.sh https://shorturl.at/cozJS | /bin/bash vhost.sh
+curl -L -o vhost.sh https://shorturl.at/ghpJW | /bin/bash vhost.sh
 ```
