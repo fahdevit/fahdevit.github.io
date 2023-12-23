@@ -12,8 +12,19 @@ bootconf() {
 
 
 firewall() {
-  sudo firewall-cmd --permanent --new-zone=coresys &&
-  sudo firewall-cmd --permanent --new-zone=sysadm && 
+
+  if [ $( firewall-cmd --get-active-zones | grep "coresys" ) == "coresys" ]; then
+    echo "zone exist";
+  else
+    sudo firewall-cmd --permanent --new-zone=coresys;
+  fi
+
+  if [ $( firewall-cmd --get-active-zones | grep "sysadm" ) == "coresys" ]; then
+    echo "zone exist";
+  else
+    sudo firewall-cmd --permanent --new-zone=sysadm;
+  fi
+
 
   sudo firewall-cmd --permanent --zone="coresys" --add-source=172.27.5.81/24 &&
   sudo firewall-cmd --permanent --zone="coresys" --add-service=ssh &&
