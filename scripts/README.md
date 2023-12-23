@@ -1,3 +1,0 @@
-# automation script compilation
-
-
