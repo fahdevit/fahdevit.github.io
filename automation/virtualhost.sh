@@ -77,7 +77,7 @@ cockpit() {
   sudo firewall-cmd --reload &&
   
   sudo systemctl daemon-reload &&
-  sudo systemctl restart cockpit.socket;
+  sudo systemctl restart cockpit.socket
 }
 
 
