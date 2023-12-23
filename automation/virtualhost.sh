@@ -87,7 +87,7 @@ podman() {
 
 
 virtualizer() {
-  dnf groupinstall "virtualization-host" -y &&
+  dnf groupinstall "virtualization host" -y &&
   dnf install cockpit-machines -y &&
   systemctl enable --now libvirtd;
 }
