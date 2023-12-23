@@ -29,7 +29,6 @@ firewall() {
     sudo firewall-cmd --permanent --new-zone=sysadm;
   fi
 
-
   sudo firewall-cmd --permanent --zone="coresys" --add-source=172.27.5.81/24 &&
   sudo firewall-cmd --permanent --zone="coresys" --add-service=ssh &&
 
@@ -42,8 +41,18 @@ firewall() {
 
 cockpit() {
 
-  mkdir mkdir /etc/systemd/system/cockpit.socket.d/ &&
-  touch /etc/systemd/system/cockpit.socket.d/listen.conf &&
+  if [ -d "/etc/systemd/system/cockpit.socket.d/"  ]; then
+    echo "cockpit socket directory exist";
+  else
+    mkdir mkdir /etc/systemd/system/cockpit.socket.d/;
+  if
+
+
+  if [ -f "/etc/systemd/system/cockpit.socket.d/listen.conf" ]; then
+    echo "cockpit listen config exist";
+  else
+    touch /etc/systemd/system/cockpit.socket.d/listen.conf;
+  fi
 
   echo "[Socket]" >  /etc/systemd/system/cockpit.socket.d/listen.conf &&
   echo "ListenStream=" >  /etc/systemd/system/cockpit.socket.d/listen.conf &&
@@ -52,10 +61,16 @@ cockpit() {
 
   sudo semanage port -m -t websm_port_t -p tcp 443 &&
 
-  touch /etc/cockpit/cockpit.conf &&
+  if [ -d "/etc/cockpit/cockpit.conf"  ]; then
+    echo "cockpit main config file exist";
+  else
+     touch /etc/cockpit/cockpit.conf;
+  if
+  
+
   echo "[WebService]" >  /etc/cockpit/cockpit.conf &&
-  echo "LoginTitle=Fakultas Adab dan Humaniora" > /etc/cockpit/cockpit.conf &&
-  echo "LoginTo=false" >  /etc/cockpit/cockpit.conf &&
+  echo "LoginTitle=Fakultas Adab dan Humaniora" >> /etc/cockpit/cockpit.conf &&
+  echo "LoginTo=false" >>  /etc/cockpit/cockpit.conf &&
 
   sudo firewall-cmd --permanent --zone="coresys" --permanent --add-service=https &&
   sudo firewall-cmd --permanent --zone="sysadm" --permanent --add-service=https &&
