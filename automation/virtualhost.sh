@@ -15,11 +15,11 @@ firewall() {
   sudo firewall-cmd --permanent --new-zone=coresys &&
   sudo firewall-cmd --permanent --new-zone=sysadm && 
 
-  sudo firewall-cmd --permanent zone="coresys" --add-source=172.27.5.81/24 &&
-  sudo firewall-cmd --permanent zone="coresys" --add-service=ssh &&
+  sudo firewall-cmd --permanent --zone="coresys" --add-source=172.27.5.81/24 &&
+  sudo firewall-cmd --permanent --zone="coresys" --add-service=ssh &&
 
-  sudo firewall-cmd --permanent zone="sysadm" --add-source=172.27.5.71/24 &&
-  sudo firewall-cmd --permanent zone="sysadm" --add-source=172.27.5.72/24 &&
+  sudo firewall-cmd --permanent --zone="sysadm" --add-source=172.27.5.71/24 &&
+  sudo firewall-cmd --permanent --zone="sysadm" --add-source=172.27.5.72/24 &&
 
   sudo firewall-cmd --reload;
 }
@@ -43,10 +43,10 @@ cockpit() {
   echo "LoginTitle=Fakultas Adab dan Humaniora" > /etc/cockpit/cockpit.conf &&
   echo "LoginTo=false" >  /etc/cockpit/cockpit.conf &&
 
-  sudo firewall-cmd --permanent zone="coresys" --permanent --add-service=https &&
-  sudo firewall-cmd --permanent zone="sysadm" --permanent --add-service=https &&
-  sudo firewall-cmd --permanent zone="sysadm" --permanent --remove-service=cockpit &&
-  sudo firewall-cmd --permanent zone="public" --permanent --remove-service=cockpit &&
+  sudo firewall-cmd --permanent --zone="coresys" --permanent --add-service=https &&
+  sudo firewall-cmd --permanent --zone="sysadm" --permanent --add-service=https &&
+  sudo firewall-cmd --permanent --zone="sysadm" --permanent --remove-service=cockpit &&
+  sudo firewall-cmd --permanent --zone="public" --permanent --remove-service=cockpit &&
   sudo firewall-cmr --reload &&
   
   sudo systemctl daemon-reload &&
