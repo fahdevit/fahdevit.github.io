@@ -44,7 +44,7 @@ cockpit() {
     echo "cockpit socket directory exist";
   else
     mkdir /etc/systemd/system/cockpit.socket.d/;
-  if
+  fi
 
   if [ -f "/etc/systemd/system/cockpit.socket.d/listen.conf" ]; then
     echo "cockpit listen config exist";
@@ -56,7 +56,7 @@ cockpit() {
     echo "cockpit main config file exist";
   else
     touch /etc/cockpit/cockpit.conf;
-  if
+  fi
   
 
   echo "[Socket]" > /etc/systemd/system/cockpit.socket.d/listen.conf &&
