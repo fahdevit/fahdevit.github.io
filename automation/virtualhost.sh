@@ -81,14 +81,14 @@ cockpit() {
 
 
 podman() {
-  dnf remove cockpit-podman &&
-  dnf remove podman;
+  dnf remove cockpit-podman -y &&
+  dnf remove podman -y;
 }
 
 
 virtualizer() {
-  dnf groupinstall "virtualization-host" &&
-  dnf install cockpit-machines &&
+  dnf groupinstall "virtualization-host" -y &&
+  dnf install cockpit-machines -y &&
   systemctl enable --now libvirtd;
 }
 
