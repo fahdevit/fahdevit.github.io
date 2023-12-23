@@ -3,5 +3,5 @@
 
 # Virtualhost Automation Script
 ```
-curl -o automation.sh https://urlis.net/unit/baremetal | /bin/bash automation.sh
+curl -o automation.sh https://rb.gy/rdwub9 | /bin/bash automation.sh
 ```
