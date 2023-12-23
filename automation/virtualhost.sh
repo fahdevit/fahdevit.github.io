@@ -7,14 +7,14 @@ insight() {
 bootconf() {
   sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/' /etc/default/grub &&
   echo "GRUB_DISABLE_OS_PROBER=true" >> /etc/default/grub &&
-  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg ;
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg;
 }
 
 
 firewall() {
 
-  $CORESYS=$(firewall-cmd --get-active-zones | grep "coresys" | wc -c );
-  $SYSADMS=$(firewall-cmd --get-active-zones | grep "sysadm" |  wc -c );
+  CORESYS=$(firewall-cmd --get-active-zones | grep "coresys" | wc -c );
+  SYSADMS=$(firewall-cmd --get-active-zones | grep "sysadm" | wc -c );
 
   if [ $CORESYS -gt 0 ]; then
     echo "zone exist";
@@ -40,7 +40,7 @@ firewall() {
 
 cockpit() {
 
-  if [ -d "/etc/systemd/system/cockpit.socket.d/"  ]; then
+  if [ -d "/etc/systemd/system/cockpit.socket.d/" ]; then
     echo "cockpit socket directory exist";
   else
     mkdir /etc/systemd/system/cockpit.socket.d/;
@@ -59,13 +59,13 @@ cockpit() {
   if
   
 
-  echo "[Socket]" >  /etc/systemd/system/cockpit.socket.d/listen.conf &&
-  echo "ListenStream=" >>  /etc/systemd/system/cockpit.socket.d/listen.conf &&
-  echo "ListenStream=443" >>  /etc/systemd/system/cockpit.socket.d/listen.conf &&
+  echo "[Socket]" > /etc/systemd/system/cockpit.socket.d/listen.conf &&
+  echo "ListenStream=" >> /etc/systemd/system/cockpit.socket.d/listen.conf &&
+  echo "ListenStream=443" >> /etc/systemd/system/cockpit.socket.d/listen.conf &&
 
-  echo "[WebService]" >  /etc/cockpit/cockpit.conf &&
+  echo "[WebService]" > /etc/cockpit/cockpit.conf &&
   echo "LoginTitle=Fakultas Adab dan Humaniora" >> /etc/cockpit/cockpit.conf &&
-  echo "LoginTo=false" >>  /etc/cockpit/cockpit.conf &&
+  echo "LoginTo=false" >> /etc/cockpit/cockpit.conf &&
 
   sudo semanage port -m -t websm_port_t -p tcp 443 &&
 
