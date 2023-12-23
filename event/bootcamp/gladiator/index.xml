@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gladiator Camp on FAHMAYA</title>
+    <link>https://risetit.fah.uinjkt.ac.id/event/bootcamp/gladiator/</link>
+    <description>Recent content in Gladiator Camp on FAHMAYA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>id</language>
+    <atom:link href="https://risetit.fah.uinjkt.ac.id/event/bootcamp/gladiator/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gladiator Camp | Batch 1</title>
+      <link>https://risetit.fah.uinjkt.ac.id/event/bootcamp/gladiator/batch-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://risetit.fah.uinjkt.ac.id/event/bootcamp/gladiator/batch-1/</guid>
+      <description>Session 2 | On Going Date : 5-6 Agustus 2023&#xA;Start : 04:00 PM, 5 Agustus 2023&#xA;End : 04:00 AM, 6 Agustus 2023&#xA;Venue : Fakultas Adab dan Humaniora&#xA;Scenario Peserta diberikan sebuah komputer dengan konfigurasi MAC ( Mandatory Access Control ), Firewall, Physical Guard dengan konfigurasi yang kacau. Peserta harus mampu melakukan normalisasi terhadap perangkat untuk bisa diakses baik secara fisik dan melalui jaringan lokal.&#xA;Goal Peserta harus mampu melakukan installasi dan konfigrasi MAC ( Mandatory Access Control ) Application pada linux dengan package manager berbasis RPM dan DEB.</description>
+    </item>
+  </channel>
+</rss>
