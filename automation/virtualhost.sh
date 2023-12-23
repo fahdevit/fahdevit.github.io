@@ -43,9 +43,8 @@ cockpit() {
   if [ -d "/etc/systemd/system/cockpit.socket.d/"  ]; then
     echo "cockpit socket directory exist";
   else
-    mkdir mkdir /etc/systemd/system/cockpit.socket.d/;
+    mkdir /etc/systemd/system/cockpit.socket.d/;
   if
-
 
   if [ -f "/etc/systemd/system/cockpit.socket.d/listen.conf" ]; then
     echo "cockpit listen config exist";
@@ -53,7 +52,7 @@ cockpit() {
     touch /etc/systemd/system/cockpit.socket.d/listen.conf;
   fi
 
-  if [ -f "/etc/cockpit/cockpit.conf"  ]; then
+  if [ -f "/etc/cockpit/cockpit.conf" ]; then
     echo "cockpit main config file exist";
   else
     touch /etc/cockpit/cockpit.conf;
@@ -64,11 +63,11 @@ cockpit() {
   echo "ListenStream=" >>  /etc/systemd/system/cockpit.socket.d/listen.conf &&
   echo "ListenStream=443" >>  /etc/systemd/system/cockpit.socket.d/listen.conf &&
 
-  sudo semanage port -m -t websm_port_t -p tcp 443 &&
-
   echo "[WebService]" >  /etc/cockpit/cockpit.conf &&
   echo "LoginTitle=Fakultas Adab dan Humaniora" >> /etc/cockpit/cockpit.conf &&
   echo "LoginTo=false" >>  /etc/cockpit/cockpit.conf &&
+
+  sudo semanage port -m -t websm_port_t -p tcp 443 &&
 
   sudo firewall-cmd --permanent --zone="coresys" --permanent --add-service=https &&
   sudo firewall-cmd --permanent --zone="sysadm" --permanent --add-service=https &&
