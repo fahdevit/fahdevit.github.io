@@ -53,19 +53,18 @@ cockpit() {
     touch /etc/systemd/system/cockpit.socket.d/listen.conf;
   fi
 
-  echo "[Socket]" >  /etc/systemd/system/cockpit.socket.d/listen.conf &&
-  echo "ListenStream=" >  /etc/systemd/system/cockpit.socket.d/listen.conf &&
-  echo "ListenStream=443" >  /etc/systemd/system/cockpit.socket.d/listen.conf &&
-
-
-  sudo semanage port -m -t websm_port_t -p tcp 443 &&
-
-  if [ -d "/etc/cockpit/cockpit.conf"  ]; then
+  if [ -f "/etc/cockpit/cockpit.conf"  ]; then
     echo "cockpit main config file exist";
   else
-     touch /etc/cockpit/cockpit.conf;
+    touch /etc/cockpit/cockpit.conf;
   if
   
+
+  echo "[Socket]" >  /etc/systemd/system/cockpit.socket.d/listen.conf &&
+  echo "ListenStream=" >>  /etc/systemd/system/cockpit.socket.d/listen.conf &&
+  echo "ListenStream=443" >>  /etc/systemd/system/cockpit.socket.d/listen.conf &&
+
+  sudo semanage port -m -t websm_port_t -p tcp 443 &&
 
   echo "[WebService]" >  /etc/cockpit/cockpit.conf &&
   echo "LoginTitle=Fakultas Adab dan Humaniora" >> /etc/cockpit/cockpit.conf &&
